@@ -42,7 +42,7 @@ export function MainScreen({ gameState }: MainScreenProps) {
             to="/collection"
             className="block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded-xl text-center text-lg transition-colors shadow-lg hover:shadow-xl"
           >
-            食材図鑑
+            図鑑
           </Link>
         </div>
       </div>

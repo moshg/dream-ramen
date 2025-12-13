@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "@tanstack/react-router";
 import type { GameState, RecipeIngredients } from "../types/game";
 import { INGREDIENTS } from "../data/ingredients";
 import { matchRecipe } from "../lib/recipeMatch";
@@ -9,8 +9,14 @@ interface CookingScreenProps {
   onCreateRamen: (recipe: any, isFirstTime: boolean) => void;
 }
 
+interface CookingLocationState {
+  selectedIngredients?: RecipeIngredients;
+}
+
 export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const locationState = location.state as CookingLocationState | undefined;
 
   // 解放済み食材でフィルタリング
   const unlockedIngredients = INGREDIENTS.filter((ing) =>
@@ -21,12 +27,33 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
   const noodles = unlockedIngredients.filter((ing) => ing.category === "noodle");
   const ingredients = unlockedIngredients.filter((ing) => ing.category === "ingredient");
 
-  // 選択状態
-  const [selectedSoup, setSelectedSoup] = useState(soups[0]?.id || "");
-  const [selectedNoodle, setSelectedNoodle] = useState(noodles[0]?.id || "");
-  const [selectedIngredient1, setSelectedIngredient1] = useState("none");
-  const [selectedIngredient2, setSelectedIngredient2] = useState("none");
-  const [selectedIngredient3, setSelectedIngredient3] = useState("none");
+  // 前回の選択があればそれを使用、なければデフォルト値
+  const previousSelection = locationState?.selectedIngredients;
+
+  const [selectedSoup, setSelectedSoup] = useState(previousSelection?.soup || soups[0]?.id || "");
+  const [selectedNoodle, setSelectedNoodle] = useState(
+    previousSelection?.noodle || noodles[0]?.id || "",
+  );
+  const [selectedIngredient1, setSelectedIngredient1] = useState(
+    previousSelection?.ingredient1 || "none",
+  );
+  const [selectedIngredient2, setSelectedIngredient2] = useState(
+    previousSelection?.ingredient2 || "none",
+  );
+  const [selectedIngredient3, setSelectedIngredient3] = useState(
+    previousSelection?.ingredient3 || "none",
+  );
+
+  // 前回の選択が変更された場合に状態を更新
+  useEffect(() => {
+    if (previousSelection) {
+      setSelectedSoup(previousSelection.soup || soups[0]?.id || "");
+      setSelectedNoodle(previousSelection.noodle || noodles[0]?.id || "");
+      setSelectedIngredient1(previousSelection.ingredient1 || "none");
+      setSelectedIngredient2(previousSelection.ingredient2 || "none");
+      setSelectedIngredient3(previousSelection.ingredient3 || "none");
+    }
+  }, [previousSelection, soups, noodles]);
 
   // 調理ボタン押下時の処理
   const handleCook = () => {

@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CookingScreen } from "../components/CookingScreen";
-import { useGameState } from "../hooks/useGameState";
+import { useGameStateContext } from "../contexts/GameStateContext";
 
 export const Route = createFileRoute("/cooking")({
   component: CookingPage,
 });
 
 function CookingPage() {
-  const { gameState, createRamen } = useGameState();
+  const { gameState, createRamen } = useGameStateContext();
 
   return <CookingScreen gameState={gameState} onCreateRamen={createRamen} />;
 }

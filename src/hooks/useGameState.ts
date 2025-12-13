@@ -78,8 +78,8 @@ export function useGameState() {
         },
       };
 
-      // 初回作成の場合は図鑑に追加
-      if (isFirstTime && !prev.discoveredRecipes.includes(recipe.id)) {
+      // 初回作成の場合は図鑑に追加（デフォルトレシピは除く）
+      if (isFirstTime && recipe.id !== "default" && !prev.discoveredRecipes.includes(recipe.id)) {
         newState.discoveredRecipes = [...prev.discoveredRecipes, recipe.id];
       }
 
