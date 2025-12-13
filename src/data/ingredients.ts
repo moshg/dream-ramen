@@ -12,12 +12,14 @@ export const INGREDIENTS: Ingredient[] = [
     name: "醤油スープ",
     category: "soup",
     cost: 0,
+    emoji: "🍶",
   },
   {
     id: "shio_soup",
     name: "塩スープ",
     category: "soup",
     cost: 0,
+    emoji: "🧂",
   },
   // 解放可能（2種）
   {
@@ -25,12 +27,14 @@ export const INGREDIENTS: Ingredient[] = [
     name: "味噌スープ",
     category: "soup",
     cost: 15,
+    emoji: "🫕",
   },
   {
     id: "tonkotsu_soup",
     name: "豚骨スープ",
     category: "soup",
     cost: 20,
+    emoji: "🦴",
   },
 
   // === 麺（4種） ===
@@ -40,12 +44,14 @@ export const INGREDIENTS: Ingredient[] = [
     name: "中太麺",
     category: "noodle",
     cost: 0,
+    emoji: "🍜",
   },
   {
     id: "thin_noodle",
     name: "細麺",
     category: "noodle",
     cost: 0,
+    emoji: "🥢",
   },
   // 解放可能（2種）
   {
@@ -53,12 +59,14 @@ export const INGREDIENTS: Ingredient[] = [
     name: "太麺",
     category: "noodle",
     cost: 10,
+    emoji: "🍝",
   },
   {
     id: "curly_noodle",
     name: "ちぢれ麺",
     category: "noodle",
     cost: 10,
+    emoji: "〰️",
   },
 
   // === 具材（10種） ===
@@ -68,24 +76,28 @@ export const INGREDIENTS: Ingredient[] = [
     name: "チャーシュー",
     category: "ingredient",
     cost: 0,
+    emoji: "🍖",
   },
   {
     id: "negi",
     name: "ネギ",
     category: "ingredient",
     cost: 0,
+    emoji: "🧅",
   },
   {
     id: "menma",
     name: "メンマ",
     category: "ingredient",
     cost: 0,
+    emoji: "🎋",
   },
   {
     id: "nori",
     name: "のり",
     category: "ingredient",
     cost: 0,
+    emoji: "🟢",
   },
   // 解放可能（6種）
   {
@@ -93,36 +105,42 @@ export const INGREDIENTS: Ingredient[] = [
     name: "煮卵",
     category: "ingredient",
     cost: 10,
+    emoji: "🥚",
   },
   {
     id: "moyashi",
     name: "もやし",
     category: "ingredient",
     cost: 5,
+    emoji: "🌱",
   },
   {
     id: "corn",
     name: "コーン",
     category: "ingredient",
     cost: 5,
+    emoji: "🌽",
   },
   {
     id: "kikurage",
     name: "キクラゲ",
     category: "ingredient",
     cost: 8,
+    emoji: "🍄",
   },
   {
     id: "beni_shoga",
     name: "紅しょうが",
     category: "ingredient",
     cost: 5,
+    emoji: "🔴",
   },
   {
     id: "spinach",
     name: "ほうれん草",
     category: "ingredient",
     cost: 8,
+    emoji: "🥬",
   },
 ];
 

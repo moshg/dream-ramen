@@ -68,9 +68,7 @@ describe("gameStore", () => {
         // 紅しょうが (5pt)
         unlockIngredient("benishoga", 5);
         expect(useGameStore.getState().points).toBe(0);
-        expect(useGameStore.getState().unlockedIngredients).toContain(
-          "benishoga"
-        );
+        expect(useGameStore.getState().unlockedIngredients).toContain("benishoga");
 
         expect(useGameStore.getState().unlockedIngredients.length).toBe(11); // 8 + 3
       });
@@ -129,19 +127,13 @@ describe("gameStore", () => {
 
         expect(result).toBe(true);
         expect(useGameStore.getState().points).toBe(0);
-        expect(useGameStore.getState().unlockedIngredients).toContain(
-          "miso_soup"
-        );
+        expect(useGameStore.getState().unlockedIngredients).toContain("miso_soup");
       });
     });
   });
 
   describe("createRamen", () => {
-    const createMockRecipe = (
-      id: string,
-      points: number,
-      isDefault = false
-    ): Recipe => ({
+    const createMockRecipe = (id: string, points: number, isDefault = false): Recipe => ({
       id: isDefault ? "default" : id,
       name: `Test Ramen ${id}`,
       points,
@@ -245,11 +237,7 @@ describe("gameStore", () => {
       createRamen(createMockRecipe("tonkotsu_ramen", 15), true);
 
       const state = useGameStore.getState();
-      expect(state.discoveredRecipes).toEqual([
-        "shoyu_ramen",
-        "miso_ramen",
-        "tonkotsu_ramen",
-      ]);
+      expect(state.discoveredRecipes).toEqual(["shoyu_ramen", "miso_ramen", "tonkotsu_ramen"]);
       expect(state.discoveredRecipes.length).toBe(3);
       expect(state.points).toBe(52); // 15 + 10 + 12 + 15
     });
@@ -257,8 +245,7 @@ describe("gameStore", () => {
 
   describe("resetGame", () => {
     it("全ての状態が初期化されること", () => {
-      const { unlockIngredient, createRamen, resetGame } =
-        useGameStore.getState();
+      const { unlockIngredient, createRamen, resetGame } = useGameStore.getState();
 
       // データを変更
       unlockIngredient("miso_soup", 15);
@@ -319,11 +306,7 @@ describe("gameStore", () => {
       const mockState = {
         state: {
           points: 100,
-          unlockedIngredients: [
-            ...INITIAL_INGREDIENTS,
-            "miso_soup",
-            "tonkotsu_soup",
-          ],
+          unlockedIngredients: [...INITIAL_INGREDIENTS, "miso_soup", "tonkotsu_soup"],
           discoveredRecipes: ["shoyu_ramen", "miso_ramen"],
           createdCount: {
             shoyu_ramen: 5,
@@ -334,11 +317,8 @@ describe("gameStore", () => {
       };
       localStorage.setItem("ramenGameState", JSON.stringify(mockState));
 
-      // ストアを再読み込み（新しいストアインスタンスを作成する代わりに、
-      // Zustandのpersistミドルウェアの仕様上、既存のストアを確認）
-      const state = useGameStore.getState();
-
-      // 注意: この時点では既存のストアの状態が残っているため、
+      // 注意: Zustandのpersistミドルウェアの仕様上、
+      // この時点では既存のストアの状態が残っているため、
       // 実際のアプリケーション起動時の動作をテストするには
       // ストアの再初期化が必要です。
       // ここでは、localStorageにデータが保存されていることを確認
@@ -420,17 +400,13 @@ describe("gameStore", () => {
 
       // 25ptになる
       expect(useGameStore.getState().points).toBe(25);
-      expect(useGameStore.getState().discoveredRecipes).toContain(
-        "shoyu_ramen"
-      );
+      expect(useGameStore.getState().discoveredRecipes).toContain("shoyu_ramen");
 
       // 高価な食材を解放
       const result = unlockIngredient("tonkotsu_soup", 20);
       expect(result).toBe(true);
       expect(useGameStore.getState().points).toBe(5);
-      expect(useGameStore.getState().unlockedIngredients).toContain(
-        "tonkotsu_soup"
-      );
+      expect(useGameStore.getState().unlockedIngredients).toContain("tonkotsu_soup");
 
       // 別のラーメンを作成
       const recipe2: Recipe = {
@@ -453,10 +429,7 @@ describe("gameStore", () => {
       // 最終状態を確認
       const finalState = useGameStore.getState();
       expect(finalState.points).toBe(20); // 5 + 15
-      expect(finalState.discoveredRecipes).toEqual([
-        "shoyu_ramen",
-        "tonkotsu_ramen",
-      ]);
+      expect(finalState.discoveredRecipes).toEqual(["shoyu_ramen", "tonkotsu_ramen"]);
       expect(finalState.createdCount["shoyu_ramen"]).toBe(1);
       expect(finalState.createdCount["tonkotsu_ramen"]).toBe(1);
       expect(finalState.unlockedIngredients.length).toBe(9); // 8 + tonkotsu_soup

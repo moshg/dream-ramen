@@ -15,6 +15,7 @@ export interface Ingredient {
   name: string; // 表示名
   category: Category; // カテゴリ（soup/noodle/ingredient）
   cost: number; // 解放コスト（0は初期所持）
+  emoji: string; // 絵文字アイコン
 }
 
 /**

@@ -65,10 +65,7 @@ export const useGameStore = create<GameStore>()(
             recipe.id !== "default" &&
             !state.discoveredRecipes.includes(recipe.id)
           ) {
-            newState.discoveredRecipes = [
-              ...state.discoveredRecipes,
-              recipe.id,
-            ];
+            newState.discoveredRecipes = [...state.discoveredRecipes, recipe.id];
           }
 
           return newState;
@@ -90,14 +87,12 @@ export const useGameStore = create<GameStore>()(
         discoveredRecipes: state.discoveredRecipes,
         createdCount: state.createdCount,
       }),
-    }
-  )
+    },
+  ),
 );
 
 // Selectors for optimized re-renders (optional but recommended)
 export const selectPoints = (state: GameStore) => state.points;
-export const selectUnlockedIngredients = (state: GameStore) =>
-  state.unlockedIngredients;
-export const selectDiscoveredRecipes = (state: GameStore) =>
-  state.discoveredRecipes;
+export const selectUnlockedIngredients = (state: GameStore) => state.unlockedIngredients;
+export const selectDiscoveredRecipes = (state: GameStore) => state.discoveredRecipes;
 export const selectCreatedCount = (state: GameStore) => state.createdCount;
