@@ -1,0 +1,3 @@
+# サプライチェーン攻撃対策として、リリースから1日以上経過したパッケージをインストールする
+# https://pnpm.io/settings#minimumreleaseage
+minimumReleaseAge: 1440
