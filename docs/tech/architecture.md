@@ -2,16 +2,16 @@
 
 ## 技術スタック
 
-| カテゴリ | 技術 | バージョン |
-|---------|------|-----------|
-| フレームワーク | React | 19.2.0 |
-| 言語 | TypeScript | 5.7.2 |
-| ビルドツール | Vite | 7.1.7 |
-| ルーティング | TanStack Router | 1.132.0 |
-| スタイリング | Tailwind CSS | 4.0.6 |
-| テスト | Vitest | 3.0.5 |
-| リンター | oxlint | 1.32.0 |
-| フォーマッター | oxfmt | 0.17.0 |
+| カテゴリ       | 技術            | バージョン |
+| -------------- | --------------- | ---------- |
+| フレームワーク | React           | 19.2.0     |
+| 言語           | TypeScript      | 5.7.2      |
+| ビルドツール   | Vite            | 7.1.7      |
+| ルーティング   | TanStack Router | 1.132.0    |
+| スタイリング   | Tailwind CSS    | 4.0.6      |
+| テスト         | Vitest          | 3.0.5      |
+| リンター       | oxlint          | 1.32.0     |
+| フォーマッター | oxfmt           | 0.17.0     |
 
 ## ディレクトリ構成
 
@@ -93,12 +93,12 @@ interface GameState {
 
 TanStack Routerを使用したファイルベースルーティング:
 
-| パス | コンポーネント | 説明 |
-|------|---------------|------|
-| `/` | MainScreen | メイン画面 |
-| `/cooking` | CookingScreen | 調理画面 |
-| `/result` | ResultScreen | 結果画面 |
-| `/collection` | CollectionScreen | 図鑑画面 |
+| パス          | コンポーネント   | 説明       |
+| ------------- | ---------------- | ---------- |
+| `/`           | MainScreen       | メイン画面 |
+| `/cooking`    | CookingScreen    | 調理画面   |
+| `/result`     | ResultScreen     | 結果画面   |
+| `/collection` | CollectionScreen | 図鑑画面   |
 
 ### ナビゲーションステート
 
