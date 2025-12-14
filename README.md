@@ -14,6 +14,7 @@
 | テスト         | Vitest          |
 | リンター       | oxlint          |
 | フォーマッター | oxfmt           |
+| Git フック     | lefthook        |
 
 ## 必要条件
 

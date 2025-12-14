@@ -1,0 +1,6 @@
+pre-push:
+  jobs:
+    - name: type check and static analysis
+      only:
+        - ref: main
+      run: pnpm turbo ci

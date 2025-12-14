@@ -12,7 +12,8 @@
     "check:type": "tsc --noEmit",
     "check:lint": "oxlint",
     "check:format": "oxfmt --check",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "postinstall": "lefthook install"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
@@ -37,6 +38,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^27.0.0",
+    "lefthook": "^2.0.11",
     "oxfmt": "^0.17.0",
     "oxlint": "^1.32.0",
     "turbo": "^2.6.3",
