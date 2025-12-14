@@ -4,6 +4,7 @@
 
 - Node.js 18以上
 - pnpm
+- Turbo
 
 ## セットアップ
 
@@ -16,14 +17,16 @@ pnpm install
 
 ```bash
 # 開発サーバーの起動 (http://localhost:3000)
-pnpm dev
+turbo dev
 ```
+
+開発サーバー起動時、Turboが自動的にルート生成（`generate:routes`）を実行してから起動します。
 
 ## ビルド
 
 ```bash
-# プロダクションビルド
-pnpm build
+# プロダクションビルド（型チェック付き）
+turbo build
 
 # ビルド結果のプレビュー
 pnpm preview
@@ -31,18 +34,20 @@ pnpm preview
 
 ## コード品質
 
+このプロジェクトでは**Turborepo**を使用してタスクの依存関係を管理し、キャッシュによる高速化を実現しています。
+
 ```bash
 # 全チェック実行（型チェック + リント + フォーマット）
-pnpm check
+turbo check
 
-# 型チェックのみ
-pnpm check:type
+# 型チェックのみ（ルート生成も自動実行）
+turbo check:type
 
 # リントのみ (oxlint)
-pnpm check:lint
+turbo check:lint
 
 # フォーマットチェックのみ (oxfmt)
-pnpm check:format
+turbo check:format
 
 # 自動フォーマット
 pnpm format
@@ -51,9 +56,11 @@ pnpm format
 ## テスト
 
 ```bash
-# テスト実行
-pnpm test
+# テスト実行（型チェック付き）
+turbo test
 ```
+
+`turbo test`は自動的に型チェック（`check:type`）を実行してからテストを実行します。
 
 ## 使用ツール
 
@@ -66,9 +73,11 @@ pnpm test
 ファイルベースルーティング。`src/routes/`以下のファイルから自動的にルートを生成。
 
 ```bash
-# ルートツリーの手動生成（通常は自動）
-pnpx @tanstack/router-cli generate
+# ルートツリーの手動生成
+turbo generate:routes
 ```
+
+**Note**: Turboを使用する場合、`generate:routes`は自動的に実行されるため、通常は手動実行不要。
 
 ### Tailwind CSS v4
 
@@ -81,3 +90,12 @@ Rustベースの高速リンター・フォーマッター。ESLint/Prettierの�
 ### Vitest
 
 Viteネイティブのテストフレームワーク。
+
+### Turborepo
+
+タスクランナー・ビルドシステム。シングルパッケージワークスペースとして使用。
+
+- **タスク定義**: `turbo.json`で依存関係とキャッシュ設定を管理
+- **依存関係グラフ**: タスク間の依存関係を自動解決し、正しい順序で実行
+- **インテリジェントキャッシュ**: ファイルに変更がなければ前回の実行結果を再利用
+- **並列実行**: 依存関係のないタスクを並列実行して高速化

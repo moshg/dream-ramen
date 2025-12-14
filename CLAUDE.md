@@ -8,16 +8,20 @@ Dream Ramen (夢のラーメン) is a ramen cooking game built with React 19. Pl
 
 ## Commands
 
+This project uses Turborepo for task orchestration with intelligent caching and dependency management.
+
 ```bash
-pnpm dev          # Start dev server at http://localhost:3000
-pnpm build        # Production build
-pnpm test         # Run tests (vitest)
-pnpm check        # Run all checks (type + lint + format)
-pnpm check:type   # TypeScript type check only
-pnpm check:lint   # Lint with oxlint
-pnpm check:format # Format check with oxfmt
-pnpm format       # Auto-format code with oxfmt
+turbo dev          # Start dev server at http://localhost:3000
+turbo build        # Production build (with type check)
+turbo test         # Run tests (with type check)
+turbo check        # Run all checks (type + lint + format)
+turbo check:type   # TypeScript type check (with route generation)
+turbo check:lint   # Lint with oxlint
+turbo check:format # Format check with oxfmt
+pnpm format        # Auto-format code with oxfmt (no turbo needed)
 ```
+
+**Note**: Task dependencies are defined in `turbo.json`. For example, `turbo check:type` automatically runs `generate:routes` first.
 
 ## Architecture
 

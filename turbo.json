@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "outputs": ["dist/**"]
+    },
+    "ci": {
+      "dependsOn": ["check", "test"]
+    },
+    "test": {},
+    "check": {
+      "dependsOn": ["check:type", "check:lint", "check:format"]
+    },
+    "check:type": {
+      "dependsOn": ["generate:routes"]
+    },
+    "check:lint": {},
+    "check:format": {},
+    "generate:routes": {
+      "outputs": ["src/routeTree.gen.ts"]
+    },
+    "format": {
+      "cache": false
+    }
+  }
+}
