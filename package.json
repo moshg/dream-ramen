@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "check": "pnpm check:type && pnpm check:lint && pnpm check:format",
-    "check:type": "pnpx @tanstack/router-cli generate && tsc --noEmit",
+    "check:type": "tsr generate && tsc --noEmit",
     "check:lint": "oxlint",
     "check:format": "oxfmt --check",
     "format": "oxfmt"
