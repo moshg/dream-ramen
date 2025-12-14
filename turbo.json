@@ -3,15 +3,19 @@
   "tasks": {
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["VITE_BASE_PATH"]
     },
     "build": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "env": ["VITE_BASE_PATH"]
     },
     "ci": {
       "dependsOn": ["check", "test"]
     },
-    "test": {},
+    "test": {
+      "env": ["VITE_BASE_PATH"]
+    },
     "check": {
       "dependsOn": ["check:type", "check:lint", "check:format"]
     },
