@@ -63,7 +63,7 @@ function isExactMatch(selected: RecipeIngredients, expected: RecipeIngredients):
 
 /**
  * まともな具材かチェック
- * "none"や同じ具材3つなどの極端な組み合わせを除外
+ * "none"や同じ具材2つ以上など不適切な組み合わせを除外
  */
 function hasDecentIngredients(ingredients: RecipeIngredients, allowedList: string[]): boolean {
   const ing1 = ingredients.ingredient1;
@@ -80,8 +80,9 @@ function hasDecentIngredients(ingredients: RecipeIngredients, allowedList: strin
     return false;
   }
 
-  // 同じ具材が3つ全て同じ場合は却下（コーン3つなど特殊レシピ以外）
-  if (ing1 === ing2 && ing2 === ing3) {
+  // 全ての具材が異なる必要がある（同じ具材2つ以上は却下）
+  const uniqueCount = new Set([ing1, ing2, ing3]).size;
+  if (uniqueCount < 3) {
     return false;
   }
 

@@ -257,5 +257,18 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shoyu_ramen");
     });
+
+    test("同じ具材2つは却下される", () => {
+      const ingredients: RecipeIngredients = {
+        soup: "shoyu_soup",
+        noodle: "medium_noodle",
+        ingredient1: "chashu",
+        ingredient2: "chashu", // 重複
+        ingredient3: "negi",
+      };
+      const result = matchRecipe(ingredients);
+      expect(result.id).toBe("default");
+      expect(result.name).toBe("イマイチなラーメン");
+    });
   });
 });
