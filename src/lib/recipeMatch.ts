@@ -1,5 +1,17 @@
 import type { Recipe, RecipeIngredients } from "../types/game";
-import { RECIPES, DEFAULT_RECIPE } from "../data/recipes";
+import {
+  SHOYU_RAMEN,
+  SHIO_RAMEN,
+  MISO_RAMEN,
+  TONKOTSU_RAMEN,
+  MISO_BUTTER_CORN_RAMEN,
+  SPINACH_SHOYU_RAMEN,
+  TONKOTSU_SHOYU_RAMEN,
+  BAD_RAMEN_1,
+  BAD_RAMEN_2,
+  MEDIOCRE_RAMEN,
+  DEFAULT_RECIPE,
+} from "../data/recipes";
 
 /**
  * レシピ判定ロジック（改善版）
@@ -126,50 +138,38 @@ const TONKOTSU_DECENT_INGREDIENTS = [
 // ラーメンマッチャー定義
 // ============================================
 
-// レシピデータから取得
-const shoyuRamenRecipe = RECIPES.find((r) => r.id === "shoyu_ramen")!;
-const shioRamenRecipe = RECIPES.find((r) => r.id === "shio_ramen")!;
-const misoRamenRecipe = RECIPES.find((r) => r.id === "miso_ramen")!;
-const tonkotsuRamenRecipe = RECIPES.find((r) => r.id === "tonkotsu_ramen")!;
-const misoButterCornRamenRecipe = RECIPES.find((r) => r.id === "miso_butter_corn_ramen")!;
-const spinachShoyuRamenRecipe = RECIPES.find((r) => r.id === "spinach_shoyu_ramen")!;
-const tonkotsuShoyuRamenRecipe = RECIPES.find((r) => r.id === "tonkotsu_shoyu_ramen")!;
-const badRamen1Recipe = RECIPES.find((r) => r.id === "bad_ramen_1")!;
-const badRamen2Recipe = RECIPES.find((r) => r.id === "bad_ramen_2")!;
-const mediocrRamenRecipe = RECIPES.find((r) => r.id === "mediocre_ramen")!;
-
 // --- 特殊レシピ（完全一致のみ）---
 
 const misoButterCornRamen: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, misoButterCornRamenRecipe.ingredients),
-  recipe: misoButterCornRamenRecipe,
+  match: (ingredients) => isExactMatch(ingredients, MISO_BUTTER_CORN_RAMEN.ingredients),
+  recipe: MISO_BUTTER_CORN_RAMEN,
 };
 
 const spinachShoyuRamen: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, spinachShoyuRamenRecipe.ingredients),
-  recipe: spinachShoyuRamenRecipe,
+  match: (ingredients) => isExactMatch(ingredients, SPINACH_SHOYU_RAMEN.ingredients),
+  recipe: SPINACH_SHOYU_RAMEN,
 };
 
 const tonkotsuShoyuRamen: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, tonkotsuShoyuRamenRecipe.ingredients),
-  recipe: tonkotsuShoyuRamenRecipe,
+  match: (ingredients) => isExactMatch(ingredients, TONKOTSU_SHOYU_RAMEN.ingredients),
+  recipe: TONKOTSU_SHOYU_RAMEN,
 };
 
 // --- 失敗系レシピ（完全一致のみ）---
 
 const badRamen1: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, badRamen1Recipe.ingredients),
-  recipe: badRamen1Recipe,
+  match: (ingredients) => isExactMatch(ingredients, BAD_RAMEN_1.ingredients),
+  recipe: BAD_RAMEN_1,
 };
 
 const badRamen2: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, badRamen2Recipe.ingredients),
-  recipe: badRamen2Recipe,
+  match: (ingredients) => isExactMatch(ingredients, BAD_RAMEN_2.ingredients),
+  recipe: BAD_RAMEN_2,
 };
 
 const mediocrRamen: RamenMatcher = {
-  match: (ingredients) => isExactMatch(ingredients, mediocrRamenRecipe.ingredients),
-  recipe: mediocrRamenRecipe,
+  match: (ingredients) => isExactMatch(ingredients, MEDIOCRE_RAMEN.ingredients),
+  recipe: MEDIOCRE_RAMEN,
 };
 
 // --- 基本レシピ（柔軟マッチング）---
@@ -182,7 +182,7 @@ const shoyuRamen: RamenMatcher = {
       hasDecentIngredients(ingredients, SHOYU_DECENT_INGREDIENTS)
     );
   },
-  recipe: shoyuRamenRecipe,
+  recipe: SHOYU_RAMEN,
 };
 
 const shioRamen: RamenMatcher = {
@@ -193,7 +193,7 @@ const shioRamen: RamenMatcher = {
       hasDecentIngredients(ingredients, SHIO_DECENT_INGREDIENTS)
     );
   },
-  recipe: shioRamenRecipe,
+  recipe: SHIO_RAMEN,
 };
 
 const misoRamen: RamenMatcher = {
@@ -204,7 +204,7 @@ const misoRamen: RamenMatcher = {
       hasDecentIngredients(ingredients, MISO_DECENT_INGREDIENTS)
     );
   },
-  recipe: misoRamenRecipe,
+  recipe: MISO_RAMEN,
 };
 
 const tonkotsuRamen: RamenMatcher = {
@@ -215,7 +215,7 @@ const tonkotsuRamen: RamenMatcher = {
       hasDecentIngredients(ingredients, TONKOTSU_DECENT_INGREDIENTS)
     );
   },
-  recipe: tonkotsuRamenRecipe,
+  recipe: TONKOTSU_RAMEN,
 };
 
 // ============================================
