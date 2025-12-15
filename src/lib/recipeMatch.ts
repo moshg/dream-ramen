@@ -42,22 +42,22 @@ function isExactMatch(selected: RecipeIngredients, expected: RecipeIngredients):
   }
 
   // 具材をソートして比較（順序を問わない）
-  const selectedIngredients = [
-    selected.ingredient1,
-    selected.ingredient2,
-    selected.ingredient3,
+  const selectedToppings = [
+    selected.topping1,
+    selected.topping2,
+    selected.topping3,
   ].sort();
 
-  const expectedIngredients = [
-    expected.ingredient1,
-    expected.ingredient2,
-    expected.ingredient3,
+  const expectedToppings = [
+    expected.topping1,
+    expected.topping2,
+    expected.topping3,
   ].sort();
 
   return (
-    selectedIngredients[0] === expectedIngredients[0] &&
-    selectedIngredients[1] === expectedIngredients[1] &&
-    selectedIngredients[2] === expectedIngredients[2]
+    selectedToppings[0] === expectedToppings[0] &&
+    selectedToppings[1] === expectedToppings[1] &&
+    selectedToppings[2] === expectedToppings[2]
   );
 }
 
@@ -66,9 +66,9 @@ function isExactMatch(selected: RecipeIngredients, expected: RecipeIngredients):
  * "none"や同じ具材2つ以上など不適切な組み合わせを除外
  */
 function hasDecentIngredients(ingredients: RecipeIngredients, allowedList: string[]): boolean {
-  const ing1 = ingredients.ingredient1;
-  const ing2 = ingredients.ingredient2;
-  const ing3 = ingredients.ingredient3;
+  const ing1 = ingredients.topping1;
+  const ing2 = ingredients.topping2;
+  const ing3 = ingredients.topping3;
 
   // "none"が含まれている場合は却下
   if (ing1 === "none" || ing2 === "none" || ing3 === "none") {

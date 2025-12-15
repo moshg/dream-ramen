@@ -106,9 +106,9 @@ describe("gameStore", () => {
           ingredients: {
             soup: "shoyu_soup",
             noodle: "medium_noodle",
-            ingredient1: "none",
-            ingredient2: "none",
-            ingredient3: "none",
+            topping1: "none",
+            topping2: "none",
+            topping3: "none",
           },
         };
         useGameStore.getState().createRamen(mockRecipe, false);
@@ -143,9 +143,9 @@ describe("gameStore", () => {
       ingredients: {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "none",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "none",
       },
     });
 
@@ -259,9 +259,9 @@ describe("gameStore", () => {
         ingredients: {
           soup: "shoyu_soup",
           noodle: "medium_noodle",
-          ingredient1: "none",
-          ingredient2: "none",
-          ingredient3: "none",
+          topping1: "none",
+          topping2: "none",
+          topping3: "none",
         },
       };
       createRamen(recipe, true);
@@ -391,9 +391,9 @@ describe("gameStore", () => {
         ingredients: {
           soup: "shoyu_soup",
           noodle: "medium_noodle",
-          ingredient1: "chashu",
-          ingredient2: "negi",
-          ingredient3: "menma",
+          topping1: "chashu",
+          topping2: "negi",
+          topping3: "menma",
         },
       };
       createRamen(recipe1, true);
@@ -419,9 +419,9 @@ describe("gameStore", () => {
         ingredients: {
           soup: "tonkotsu_soup",
           noodle: "medium_noodle",
-          ingredient1: "chashu",
-          ingredient2: "negi",
-          ingredient3: "kikurage",
+          topping1: "chashu",
+          topping2: "negi",
+          topping3: "kikurage",
         },
       };
       createRamen(recipe2, true);

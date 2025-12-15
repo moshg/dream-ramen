@@ -32,9 +32,9 @@ function ResultPage() {
         locationState.selectedIngredients ?? {
           soup: "",
           noodle: "",
-          ingredient1: "none",
-          ingredient2: "none",
-          ingredient3: "none",
+          topping1: "none",
+          topping2: "none",
+          topping3: "none",
         }
       }
     />

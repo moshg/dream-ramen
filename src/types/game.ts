@@ -5,7 +5,7 @@
 /**
  * 食材カテゴリ
  */
-export type Category = "soup" | "noodle" | "ingredient";
+export type Category = "soup" | "noodle" | "topping";
 
 /**
  * 食材データ
@@ -24,9 +24,9 @@ export interface Ingredient {
 export interface RecipeIngredients {
   soup: string; // スープID
   noodle: string; // 麺ID
-  ingredient1: string; // 具材1のID（"none"は「なし」）
-  ingredient2: string; // 具材2のID（"none"は「なし」）
-  ingredient3: string; // 具材3のID（"none"は「なし」）
+  topping1: string; // 具材1のID（"none"は「なし」）
+  topping2: string; // 具材2のID（"none"は「なし」）
+  topping3: string; // 具材3のID（"none"は「なし」）
 }
 
 /**

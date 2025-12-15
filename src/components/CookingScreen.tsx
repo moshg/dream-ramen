@@ -25,7 +25,7 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
 
   const soups = unlockedIngredients.filter((ing) => ing.category === "soup");
   const noodles = unlockedIngredients.filter((ing) => ing.category === "noodle");
-  const toppings = unlockedIngredients.filter((ing) => ing.category === "ingredient");
+  const toppings = unlockedIngredients.filter((ing) => ing.category === "topping");
 
   // 前回の選択があればそれを使用
   const previousSelection = locationState?.selectedIngredients;
@@ -41,14 +41,14 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
       setSelectedSoup(previousSelection.soup || null);
       setSelectedNoodle(previousSelection.noodle || null);
       const toppings: string[] = [];
-      if (previousSelection.ingredient1 && previousSelection.ingredient1 !== "none") {
-        toppings.push(previousSelection.ingredient1);
+      if (previousSelection.topping1 && previousSelection.topping1 !== "none") {
+        toppings.push(previousSelection.topping1);
       }
-      if (previousSelection.ingredient2 && previousSelection.ingredient2 !== "none") {
-        toppings.push(previousSelection.ingredient2);
+      if (previousSelection.topping2 && previousSelection.topping2 !== "none") {
+        toppings.push(previousSelection.topping2);
       }
-      if (previousSelection.ingredient3 && previousSelection.ingredient3 !== "none") {
-        toppings.push(previousSelection.ingredient3);
+      if (previousSelection.topping3 && previousSelection.topping3 !== "none") {
+        toppings.push(previousSelection.topping3);
       }
       setSelectedToppings(toppings);
     }
@@ -86,7 +86,7 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
       case "noodle":
         setSelectedNoodle(null);
         break;
-      case "ingredient":
+      case "topping":
         setSelectedToppings((prev) => prev.filter((id) => id !== ingredientId));
         break;
     }
@@ -99,9 +99,9 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
     const selectedIngredients: RecipeIngredients = {
       soup: selectedSoup,
       noodle: selectedNoodle,
-      ingredient1: selectedToppings[0] || "none",
-      ingredient2: selectedToppings[1] || "none",
-      ingredient3: selectedToppings[2] || "none",
+      topping1: selectedToppings[0] || "none",
+      topping2: selectedToppings[1] || "none",
+      topping3: selectedToppings[2] || "none",
     };
 
     const recipe = matchRecipe(selectedIngredients);
@@ -284,7 +284,7 @@ export function CookingScreen({ gameState, onCreateRamen }: CookingScreenProps) 
                       selectedToppingsData.map((topping) => (
                         <button
                           key={topping.id}
-                          onClick={() => handleRemoveFromPreview(topping.id, "ingredient")}
+                          onClick={() => handleRemoveFromPreview(topping.id, "topping")}
                           className="inline-flex items-center gap-1 bg-white px-3 py-1 rounded-full border border-orange-300 text-sm hover:bg-red-50 hover:border-red-300 transition-colors"
                         >
                           <span>{topping.emoji}</span>

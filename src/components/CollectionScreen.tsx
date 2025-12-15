@@ -32,7 +32,7 @@ export function CollectionScreen({ gameState, onUnlockIngredient }: CollectionSc
   // カテゴリ別に食材を分類
   const soups = INGREDIENTS.filter((ing) => ing.category === "soup");
   const noodles = INGREDIENTS.filter((ing) => ing.category === "noodle");
-  const ingredients = INGREDIENTS.filter((ing) => ing.category === "ingredient");
+  const toppings = INGREDIENTS.filter((ing) => ing.category === "topping");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center p-4">
@@ -195,27 +195,27 @@ export function CollectionScreen({ gameState, onUnlockIngredient }: CollectionSc
                   === 具材 ===
                 </h3>
                 <div className="space-y-2">
-                  {ingredients.map((ingredient) => {
-                    const unlocked = gameState.unlockedIngredients.includes(ingredient.id);
+                  {toppings.map((topping) => {
+                    const unlocked = gameState.unlockedIngredients.includes(topping.id);
                     return (
                       <div
-                        key={ingredient.id}
+                        key={topping.id}
                         className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                       >
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{unlocked ? "✓" : "🔒"}</span>
-                          <span className="text-gray-700">{ingredient.name}</span>
+                          <span className="text-gray-700">{topping.name}</span>
                         </div>
                         {!unlocked && (
                           <div className="flex items-center gap-2">
-                            <span className="text-gray-600">{ingredient.cost}pt</span>
+                            <span className="text-gray-600">{topping.cost}pt</span>
                             <button
                               onClick={() =>
-                                handleUnlock(ingredient.id, ingredient.cost, ingredient.name)
+                                handleUnlock(topping.id, topping.cost, topping.name)
                               }
-                              disabled={gameState.points < ingredient.cost}
+                              disabled={gameState.points < topping.cost}
                               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                                gameState.points >= ingredient.cost
+                                gameState.points >= topping.cost
                                   ? "bg-orange-500 hover:bg-orange-600 text-white"
                                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
                               }`}

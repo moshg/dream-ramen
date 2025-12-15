@@ -8,9 +8,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "menma",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "menma",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shoyu_ramen");
@@ -22,9 +22,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "nori", // メンマ → のり
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "nori", // メンマ → のり
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shoyu_ramen");
@@ -36,9 +36,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "boiled_egg",
-        ingredient2: "spinach",
-        ingredient3: "negi",
+        topping1: "boiled_egg",
+        topping2: "spinach",
+        topping3: "negi",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shoyu_ramen");
@@ -49,9 +49,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "thin_noodle", // 中太麺ではない
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "menma",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "menma",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("default"); // デフォルトレシピ
@@ -63,9 +63,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shio_soup",
         noodle: "thin_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "nori",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "nori",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shio_ramen");
@@ -77,9 +77,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shio_soup",
         noodle: "thin_noodle",
-        ingredient1: "chashu",
-        ingredient2: "menma", // ネギ → メンマ
-        ingredient3: "nori",
+        topping1: "chashu",
+        topping2: "menma", // ネギ → メンマ
+        topping3: "nori",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shio_ramen");
@@ -92,9 +92,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "miso_soup",
         noodle: "curly_noodle",
-        ingredient1: "chashu",
-        ingredient2: "moyashi",
-        ingredient3: "corn",
+        topping1: "chashu",
+        topping2: "moyashi",
+        topping3: "corn",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("miso_ramen");
@@ -106,9 +106,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "miso_soup",
         noodle: "curly_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi", // もやし → ネギ
-        ingredient3: "corn",
+        topping1: "chashu",
+        topping2: "negi", // もやし → ネギ
+        topping3: "corn",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("miso_ramen");
@@ -121,9 +121,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "tonkotsu_soup",
         noodle: "thin_noodle",
-        ingredient1: "chashu",
-        ingredient2: "kikurage",
-        ingredient3: "beni_shoga",
+        topping1: "chashu",
+        topping2: "kikurage",
+        topping3: "beni_shoga",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("tonkotsu_ramen");
@@ -135,9 +135,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "tonkotsu_soup",
         noodle: "thin_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "moyashi",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "moyashi",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("tonkotsu_ramen");
@@ -150,9 +150,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "miso_soup",
         noodle: "curly_noodle",
-        ingredient1: "corn",
-        ingredient2: "corn",
-        ingredient3: "corn",
+        topping1: "corn",
+        topping2: "corn",
+        topping3: "corn",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("miso_butter_corn_ramen");
@@ -164,9 +164,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "chashu",
-        ingredient2: "spinach",
-        ingredient3: "boiled_egg",
+        topping1: "chashu",
+        topping2: "spinach",
+        topping3: "boiled_egg",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("spinach_shoyu_ramen");
@@ -178,9 +178,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "tonkotsu_soup",
         noodle: "thick_noodle",
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "boiled_egg",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "boiled_egg",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("tonkotsu_shoyu_ramen");
@@ -194,9 +194,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "nori",
-        ingredient2: "nori",
-        ingredient3: "nori",
+        topping1: "nori",
+        topping2: "nori",
+        topping3: "nori",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("bad_ramen_1");
@@ -207,9 +207,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shio_soup",
         noodle: "thick_noodle",
-        ingredient1: "none",
-        ingredient2: "none",
-        ingredient3: "none",
+        topping1: "none",
+        topping2: "none",
+        topping3: "none",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("bad_ramen_2");
@@ -222,9 +222,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "thick_noodle", // 醤油ラーメンは中太麺
-        ingredient1: "chashu",
-        ingredient2: "negi",
-        ingredient3: "menma",
+        topping1: "chashu",
+        topping2: "negi",
+        topping3: "menma",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("default");
@@ -236,9 +236,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "beni_shoga", // 醤油ラーメンには合わない
-        ingredient2: "corn",
-        ingredient3: "kikurage",
+        topping1: "beni_shoga", // 醤油ラーメンには合わない
+        topping2: "corn",
+        topping3: "kikurage",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("default");
@@ -250,9 +250,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "nori",
-        ingredient2: "chashu",
-        ingredient3: "negi",
+        topping1: "nori",
+        topping2: "chashu",
+        topping3: "negi",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("shoyu_ramen");
@@ -262,9 +262,9 @@ describe("recipeMatch - 柔軟マッチング", () => {
       const ingredients: RecipeIngredients = {
         soup: "shoyu_soup",
         noodle: "medium_noodle",
-        ingredient1: "chashu",
-        ingredient2: "chashu", // 重複
-        ingredient3: "negi",
+        topping1: "chashu",
+        topping2: "chashu", // 重複
+        topping3: "negi",
       };
       const result = matchRecipe(ingredients);
       expect(result.id).toBe("default");

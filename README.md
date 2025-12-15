@@ -73,3 +73,8 @@ turbo format
 # テスト実行（型チェック付き）
 turbo test
 ```
+
+## ドキュメント
+
+- [ユビキタス言語](docs/ubiquitous-language.md) - プロジェクトで使用するドメイン用語の定義
+- [Claude Code開発者向けガイド](CLAUDE.md) - AI支援開発のためのプロジェクトガイド
